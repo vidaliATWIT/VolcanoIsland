@@ -50,12 +50,13 @@ public class Enemy : MonoBehaviour
             player.takeDamage(damage);
             ParticleSystem ps = Instantiate(hitEffect, this.transform.position, Quaternion.identity);
 
-            GameObject.Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            //GameObject.Destroy(this.gameObject);
         } else if (collision.tag == "Ground")
         {
             ParticleSystem ps = Instantiate(hitEffect, this.transform.position, Quaternion.identity);
-
-            GameObject.Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+           //GameObject.Destroy(this.gameObject);
         }
     }
 

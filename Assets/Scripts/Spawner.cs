@@ -10,6 +10,8 @@ public class Spawner : MonoBehaviour
     public float minSpawnTime;
     public float decreaseAmount;
 
+    public ObjectPooler fireballPool;
+
     private float spawnTimer;
 
     // Start is called before the first frame update
@@ -37,7 +39,10 @@ public class Spawner : MonoBehaviour
             float xPos = Random.Range(-8.5f, 8.5f);
             Vector3 location = new Vector3(xPos, 5.5f, 0.0f);
             //print("Spawn fireball");
-            Instantiate(enemy, location, Quaternion.identity);
+            GameObject go = fireballPool.GetPooledObject();
+            go.transform.position = location;
+            go.SetActive(true);
+            //Instantiate(enemy, location, Quaternion.identity);
 
 
             //difficulty stuff
