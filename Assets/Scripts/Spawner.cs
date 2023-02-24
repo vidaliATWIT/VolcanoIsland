@@ -32,17 +32,19 @@ public class Spawner : MonoBehaviour
         if (spawnTimer<=0)
         {
             Vector3 player_pos = GameManager.instance().getPlayerVector();
-            print("Player pos at:  " + player_pos);
+            //print("Player pos at:  " + player_pos);
 
             //do the spawn
             GameObject enemy = enemies[Random.Range(0, enemies.Length)];
             float xPos = Random.Range(-8.5f, 8.5f);
             Vector3 location = new Vector3(xPos, 5.5f, 0.0f);
             //print("Spawn fireball");
+            /*
             GameObject go = fireballPool.GetPooledObject();
             go.transform.position = location;
             go.SetActive(true);
-            //Instantiate(enemy, location, Quaternion.identity);
+            */
+            Instantiate(enemy, location, Quaternion.identity);
 
 
             //difficulty stuff

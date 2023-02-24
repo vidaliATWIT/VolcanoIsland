@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     {
         //pick random speed between min and max
         Vector3 player_pos = GameManager.instance().getPlayerVector();
-        print("PLAYER FACING: " + GameManager.instance().getPlayerFacing());
+        //print("PLAYER FACING: " + GameManager.instance().getPlayerFacing());
         player_pos.x += GameManager.instance().getPlayerFacing() * 3; // multiplier is how much to move the x from the player
         direction = player_pos - transform.position;
 
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         {
             gm=FindObjectOfType<GameManager>();
         }
-        print("direction: " + direction);
+        //print("direction: " + direction);
         this.transform.Translate(this.direction * speed * Time.deltaTime);
     }
 
@@ -50,13 +50,13 @@ public class Enemy : MonoBehaviour
             player.takeDamage(damage);
             ParticleSystem ps = Instantiate(hitEffect, this.transform.position, Quaternion.identity);
 
-            this.gameObject.SetActive(false);
-            //GameObject.Destroy(this.gameObject);
+            //this.gameObject.SetActive(false);
+            GameObject.Destroy(this.gameObject);
         } else if (collision.tag == "Ground")
         {
             ParticleSystem ps = Instantiate(hitEffect, this.transform.position, Quaternion.identity);
-            this.gameObject.SetActive(false);
-           //GameObject.Destroy(this.gameObject);
+            //this.gameObject.SetActive(false);
+            GameObject.Destroy(this.gameObject);
         }
     }
 
